@@ -4,9 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
     "dev": "nodemon index.js",
-    "start": "node index.js", // For production
-    "build": "echo 'No build process needed for this app'" // Vercel build command
+    "build": "echo 'No build process needed for this app'"
   },
   "keywords": [],
   "author": "",

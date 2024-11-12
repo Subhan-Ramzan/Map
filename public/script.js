@@ -4,7 +4,7 @@ console.log("Script loaded successfully.");
 // Initialize the map
 const map = L.map("map").setView([0, 0], 16);
 
-// Add the tile layer to the map
+// Add the tile layer to the map (OpenStreetMap tiles)
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution: "&copy; contributors",
 }).addTo(map);
@@ -35,11 +35,12 @@ socket.on("receive-location", (data) => {
   markers[id].bindPopup(popup).openPopup();
 });
 
-// Geolocation handling
+// Geolocation handling (send location to server)
 if (navigator.geolocation) {
   navigator.geolocation.watchPosition(
     (position) => {
       const { latitude, longitude } = position.coords;
+      console.log("Sending location:", latitude, longitude);
       socket.emit("send-location", { latitude, longitude });
     },
     (error) => {
